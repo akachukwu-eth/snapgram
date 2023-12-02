@@ -91,8 +91,8 @@ const PostDetails = () => {
                   <img
                     src={"/assets/icons/edit.svg"}
                     alt="edit"
-                    width={24}
-                    height={24}
+                    width={26}
+                    height={26}
                   />
                 </Link>
 
@@ -105,8 +105,8 @@ const PostDetails = () => {
                   <img
                     src={"/assets/icons/delete.svg"}
                     alt="delete"
-                    width={24}
-                    height={24}
+                    width={26}
+                    height={26}
                   />
                 </Button>
               </div>
