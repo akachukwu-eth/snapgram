@@ -61,7 +61,7 @@ export const useGetPosts = () => {
   return useInfiniteQuery({
     queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
     queryFn: getInfinitePosts,
-    getNextPageParam: (lastPage: { documents: string | any[]; }) => {
+    getNextPageParam: (lastPage) => {
       if (lastPage && lastPage.documents.length === 0) return null;
 
       const lastId = lastPage?.documents[lastPage?.documents.length - 1].$id;
