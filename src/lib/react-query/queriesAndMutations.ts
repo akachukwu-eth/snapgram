@@ -3,8 +3,6 @@ import {
   useMutation,
   useQueryClient,
   useInfiniteQuery,
-  UseInfiniteQueryOptions,
-  UseInfiniteQueryResult,
 } from "@tanstack/react-query";
 
 import { QUERY_KEYS } from "@/lib/react-query/queryKeys";
@@ -64,9 +62,15 @@ export const useGetPosts = () => {
     getNextPageParam: (lastPage) => {
       if (lastPage && lastPage.documents.length === 0) return null;
 
-      const lastId = lastPage?.documents[lastPage?.documents.length - 1].$id;
+      const lastDocument = lastPage?.documents[lastPage?.documents.length - 1];
+      if (!lastDocument) return null;
+
+      const lastId = typeof lastDocument.$id === 'string' ? parseInt(lastDocument.$id, 10) : lastDocument.$id;
+      if (isNaN(lastId)) return null;
+
       return lastId;
     },
+    initialPageParam: 1, // Add the initialPageParam property
   });
 };
 

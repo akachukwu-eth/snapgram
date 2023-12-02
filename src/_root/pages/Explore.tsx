@@ -5,6 +5,7 @@ import { Input } from "@/components/ui";
 import useDebounce from "@/hooks/useDebounce";
 import { GridPostList, Loader } from "@/components/shared";
 import { useGetPosts, useSearchPosts } from "@/lib/react-query/queriesAndMutations";
+
 export type SearchResultProps = {
   isSearchFetching: boolean;
   searchedPosts: any;
@@ -28,7 +29,9 @@ const Explore = () => {
 
   const [searchValue, setSearchValue] = useState("");
   const debouncedSearch = useDebounce(searchValue, 500);
-  const { data: searchedPosts, isFetching: isSearchFetching } = useSearchPosts(debouncedSearch);
+  const { data: searchedPosts, isFetching: isSearchFetching } = useSearchPosts(
+    debouncedSearch
+  );
 
   useEffect(() => {
     if (inView && !searchValue) {
@@ -44,8 +47,9 @@ const Explore = () => {
     );
 
   const shouldShowSearchResults = searchValue !== "";
-  const shouldShowPosts = !shouldShowSearchResults && 
-    posts.pages.every((item) => item.documents.length === 0);
+  const shouldShowPosts =
+    !shouldShowSearchResults &&
+    posts.pages.every((item) => item?.documents.length === 0);
 
   return (
     <div className="explore-container">
@@ -76,12 +80,7 @@ const Explore = () => {
 
         <div className="flex-center gap-3 bg-dark-3 rounded-xl px-4 py-2 cursor-pointer">
           <p className="small-medium md:base-medium text-light-2">All</p>
-          <img
-            src="/assets/icons/filter.svg"
-            width={20}
-            height={20}
-            alt="filter"
-          />
+          <img src="/assets/icons/filter.svg" width={20} height={20} alt="filter" />
         </div>
       </div>
 
@@ -95,7 +94,7 @@ const Explore = () => {
           <p className="text-light-4 mt-10 text-center w-full">End of posts</p>
         ) : (
           posts.pages.map((item, index) => (
-            <GridPostList key={`page-${index}`} posts={item.documents} />
+            item && <GridPostList key={`page-${index}`} posts={item.documents} />
           ))
         )}
       </div>
