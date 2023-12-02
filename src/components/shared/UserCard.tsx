@@ -8,6 +8,7 @@ type UserCardProps = {
 };
 
 const UserCard = ({ user }: UserCardProps) => {
+  const showBadge = user.username === "therealakach";
   return (
     <Link to={`/profile/${user.$id}`} className="user-card">
       <img
@@ -21,7 +22,8 @@ const UserCard = ({ user }: UserCardProps) => {
           {user.name}
         </p>
         <p className="small-regular text-light-3 text-center line-clamp-1">
-          @{user.username}
+          @{user.username}{" "}
+          {showBadge && <img src="/assets/icons/verify.png" alt="badge" className="inline-block w-4 h-4" />}
         </p>
       </div>
 

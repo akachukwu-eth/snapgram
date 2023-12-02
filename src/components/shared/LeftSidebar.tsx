@@ -38,8 +38,9 @@ const LeftSidebar = () => {
             <p className="body-bold">
               {user.name}
             </p>
-            <p className="small-regular text-light-3">
-              @{user.username}
+            <p className="small-regular pb-2 text-light-3">
+              @{user.username}{" "}
+            <img src="/assets/icons/verify.png" alt="badge" className="inline-block w-4 h-4" />
             </p>
           </div>
         </Link>

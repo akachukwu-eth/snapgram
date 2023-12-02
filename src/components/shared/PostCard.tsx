@@ -16,6 +16,8 @@ const PostCard = ({ post }: PostCardProps) => {
     return <div>Creator information not available</div>;
   }
 
+  const showBadge = post.creator.username === "therealakach";
+
   return (
     <div className="post-card">
       <div className="flex-between">
@@ -30,7 +32,8 @@ const PostCard = ({ post }: PostCardProps) => {
 
           <div className="flex flex-col">
             <p className="base-medium lg:body-bold text-light-1">
-              {post.creator.name}
+              {post.creator.name}{" "}
+              {showBadge && <img src="/assets/icons/verify.png" alt="badge" className="inline-block w-4 h-4" />}
             </p>
             <div className="flex-center gap-2 text-light-3">
               <p className="subtle-semibold lg:small-regular">

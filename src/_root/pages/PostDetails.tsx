@@ -28,6 +28,8 @@ const PostDetails = () => {
     navigate(-1);
   };
 
+  const showBadge = post?.creator.username === "therealakach";
+
   return (
     <div className="post_details-container">
       <div className="hidden md:flex max-w-5xl w-full">
@@ -70,7 +72,9 @@ const PostDetails = () => {
                 />
                 <div className="flex gap-1 flex-col">
                   <p className="base-medium lg:body-bold text-light-1">
-                    {post?.creator.name}
+                    {post?.creator.name}{showBadge && (
+                      <img src="/assets/icons/verify.png" alt="badge" className="inline-block w-5 h-5 ml-2" />
+                    )}
                   </p>
                   <div className="flex-center gap-2 text-light-3">
                     <p className="subtle-semibold lg:small-regular ">
@@ -99,9 +103,8 @@ const PostDetails = () => {
                 <Button
                   onClick={handleDeletePost}
                   variant="ghost"
-                  className={`ost_details-delete_btn ${
-                    user.id !== post?.creator.$id && "hidden"
-                  }`}>
+                  className={`ost_details-delete_btn ${user.id !== post?.creator.$id && "hidden"
+                    }`}>
                   <img
                     src={"/assets/icons/delete.svg"}
                     alt="delete"
