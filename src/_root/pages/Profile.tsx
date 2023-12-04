@@ -56,7 +56,7 @@ const Profile = () => {
 
   const followersCount = " ";
   const followingCount = " ";
-
+  const showBadge = user.username === "therealakach";
   return (
     <div className="profile-container">
       <div className="profile-inner_container">
@@ -75,7 +75,7 @@ const Profile = () => {
               </h1>
               <p className="small-regular md:body-medium text-light-3 text-center xl:text-left">
                 @{currentUser.username}{" "}
-                <img src="/assets/icons/verify.png" alt="badge" className="inline-block w-5 h-5" />
+                {showBadge && <img src="/assets/icons/verify.png" alt="badge" className="inline-block w-4 h-4" />}
               </p>
             </div>
 
