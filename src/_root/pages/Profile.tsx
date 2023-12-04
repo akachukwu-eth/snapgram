@@ -56,7 +56,7 @@ const Profile = () => {
 
   const followersCount = " ";
   const followingCount = " ";
-  const showBadge = currentUser.$id === "therealakach"; // Replace "therealakachId" with the actual user ID of "therealakach"
+  const showBadge = currentUser.username === "therealakach";
   return (
     <div className="profile-container">
       <div className="profile-inner_container">
